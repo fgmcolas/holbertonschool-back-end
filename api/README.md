@@ -1,4 +1,4 @@
-API
+# API
 
 Background Context:
 Traditionally, system administrators relied heavily on Bash scripting for automation tasks. However, with the emergence of Site Reliability Engineers (SREs), who possess broader programming skills, there's a shift towards more efficient languages like Python. This project focuses on utilizing Python to access employee data via an API, organizing it, and exporting it into different data structures.
