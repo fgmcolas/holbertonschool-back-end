@@ -1,4 +1,4 @@
-#!usr/bin/bash/python3
+#!/usr/bin/python3
 """Python script to fetch and display TODO list
 progress for a given employee ID using a REST API"""
 import requests
