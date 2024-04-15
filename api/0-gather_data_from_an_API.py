@@ -10,25 +10,25 @@ if __name__ == "__main__":
         print(f"Usage: python3 {__file__} employee_id(int)")
         sys.exit(1)
 
-    url = "https://jsonplaceholder.typicode.com"
-    employeeId = sys.argv[1]
+    URL = "https://jsonplaceholder.typicode.com"
+    EMPLOYEE_ID = sys.argv[1]
 
-    response = requests.get(
-        f"{url}/users/{employeeId}/todos",
+    RESPONSE = requests.get(
+        f"{URL}/users/{EMPLOYEE_ID}/todos",
         params={"_expand": "user"}
     )
-    data = response.json()
+    data = RESPONSE.json()
 
     if not len(data):
         print("RequestError:", 404)
         sys.exit(1)
 
-    completed_tasks = [task for task in data if task["completed"]]
-    total_tasks = len(data)
-    total_done_tasks = len(completed_tasks)
-    employee_name = data[0]["user"]["name"]
+    TASK_TITLE = [task for task in data if task["completed"]]
+    TOTAL_NUMBER_OF_TASKS = len(data)
+    NUMBER_OF_DONE_TASKS = len(TASK_TITLE)
+    EMPLOYEE_NAME = data[0]["user"]["name"]
 
-    print(f"Employee {employee_name} is done with tasks"
-          f"({total_done_tasks}/{total_tasks}):")
-    for task in completed_tasks:
+    print(f"Employee {EMPLOYEE_NAME} is done with tasks"
+          f"({NUMBER_OF_DONE_TASKS}/{TOTAL_NUMBER_OF_TASKS}):")
+    for task in TASK_TITLE:
         print(f"\t {task["title"]}")
