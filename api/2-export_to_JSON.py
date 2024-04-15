@@ -11,27 +11,27 @@ if __name__ == "__main__":
         print(f"UsageError: python3 {__file__} employeeId(int)")
         sys.exit(1)
 
-    url = "https://jsonplaceholder.typicode.com"
-    employeeId = sys.argv[1]
+    URL = "https://jsonplaceholder.typicode.com"
+    EMPLOYEE_ID = sys.argv[1]
 
-    response = requests.get(
-        f"{url}/users/{employeeId}/todos",
+    RESPONSE = requests.get(
+        f"{URL}/users/{EMPLOYEE_ID}/todos",
         params={"_expand": "user"}
     )
-    data = response.json()
+    data = RESPONSE.json()
 
     if not len(data):
         print("RequestError:", 404)
         sys.exit(1)
 
-    user_tasks = {employeeId: []}
+    USER_TASK = {EMPLOYEE_ID: []}
     for task in data:
         task_dict = {
             "task": task["title"],
             "completed": task["completed"],
             "username": task["user"]["username"]
         }
-        user_tasks[employeeId].append(task_dict)
+        USER_TASK[EMPLOYEE_ID].append(task_dict)
 
-    with open(f"{employeeId}.json", "w") as file:
-        json.dump(user_tasks, file)
+    with open(f"{EMPLOYEE_ID}.json", "w") as file:
+        json.dump(USER_TASK, file)
